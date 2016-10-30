@@ -25,13 +25,11 @@ before_deploy:
   - aws --version
   # Parse branch name and determine an environment to deploy
   - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
-  # account number to mask
-  - account_number=$(aws sts get-caller-identity --output text --query 'Account')
   # prune to reduce package size
   - npm prune --production
 deploy:
   - provider: script
-    script: ./scripts/deploy.sh ${ENV} | sed -e "s/${account_number}/SECRET/g"
+    script: ./scripts/deploy.sh ${ENV}
     skip_cleanup: true
     on:
       branch: deploy/*

@@ -27,6 +27,8 @@ before_deploy:
   - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
   # account number to mask
   - account_number=$(aws sts get-caller-identity --output text --query 'Account')
+  # prune to reduce package size
+  - npm prune --production
 deploy:
   - provider: script
     script: ./scripts/deploy.sh ${ENV} | sed -e "s/${account_number}/SECRET/g"

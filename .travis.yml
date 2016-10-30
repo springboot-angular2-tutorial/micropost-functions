@@ -19,14 +19,14 @@ script:
   - echo "do some tests..."
 
 before_deploy:
-  # Parse branch name and determine an environment to deploy
-  - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
-  # account number to mask
-  - account_number=$(aws sts get-caller-identity --output text --query 'Account')
   # install aws cli
   - sudo apt-get -y install python-pip
   - sudo pip install awscli
   - aws --version
+  # Parse branch name and determine an environment to deploy
+  - export ENV=$(echo "${TRAVIS_BRANCH}" | perl -ne "print $& if /(?<=deploy\/).*/")
+  # account number to mask
+  - account_number=$(aws sts get-caller-identity --output text --query 'Account')
 deploy:
   - provider: script
     script: ./scripts/deploy.sh ${ENV} | sed -e "s/${account_number}/SECRET/g"

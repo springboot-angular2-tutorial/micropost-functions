@@ -11,7 +11,10 @@ if [ "${ENV}" = "prod" ]; then
   source scripts/switch-production-role.sh
 fi
 
-sls deploy -v --stage ${ENV}
+# account number to mask
+account_number=$(aws sts get-caller-identity --output text --query 'Account')
+
+sls deploy -v --stage ${ENV} | sed -e "s/${account_number}/SECRET/g"
 
 if [ "${ENV}" = "prod" ]; then
   # reset current role if exists

@@ -34,6 +34,7 @@ sls invoke -f notifyToSlack -l
 ## Related Projects
 
 * [Angular2 app](https://github.com/springboot-angular2-tutorial/angular2-app)
+* [Spring Boot app](https://github.com/springboot-angular2-tutorial/boot-app)
 * [Android app](https://github.com/springboot-angular2-tutorial/android-app)
 * [Server provisioning by Ansible and Packer](https://github.com/springboot-angular2-tutorial/micropost-provisionings)
 * [Infrastructure by Terraform](https://github.com/springboot-angular2-tutorial/micropost-formation)

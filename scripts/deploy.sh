@@ -2,10 +2,8 @@
 
 set -u
 
-ENV=$1
-
-if [ "${ENV}" = "prod" ]; then
-  source scripts/switch-production-role.sh
+if [ ! -v AWS_SESSION_TOKEN ]; then
+  source ./scripts/switch-role.sh
 fi
 
 # account number to mask

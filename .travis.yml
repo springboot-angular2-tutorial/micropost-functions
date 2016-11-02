@@ -29,7 +29,7 @@ before_deploy:
   - npm prune --production
 deploy:
   - provider: script
-    script: ./scripts/deploy.sh ${ENV}
+    script: ./scripts/deploy.sh
     skip_cleanup: true
     on:
       branch: deploy/*

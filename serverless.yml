@@ -30,6 +30,7 @@ functions:
     handler: functions/replace_web_instances.handle
     events:
       - sns: backend_app_updated
+      - sns: frontend_app_updated
       - sns: web_image_updated
 
 custom:

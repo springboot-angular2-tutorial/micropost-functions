@@ -5,33 +5,12 @@ provider:
   runtime: nodejs4.3
   region: ap-northeast-1
   stage: ${opt:stage, self:custom.defaultStage}
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - "ec2:DescribeImages"
-        - "ec2:DeregisterImage"
-        - "ec2:DeleteSnapshot"
-        - "autoscaling:DescribeAutoScalingGroups"
-        - "autoscaling:SetDesiredCapacity"
-        - "autoscaling:DescribeLaunchConfigurations"
-      Resource: "*"
 
 functions:
   notifyToSlack:
     handler: functions/notify_to_slack.handle
     events:
-      - sns: frontend_deployed
       - sns: web_autoscaled
-  removeUnusedAndRotatedImages:
-    handler: functions/remove_unused_and_rotated_images.handle
-    events:
-      - sns: web_image_updated
-  replaceWebInstances:
-    handler: functions/replace_web_instances.handle
-    events:
-      - sns: backend_app_updated
-      - sns: frontend_app_updated
-      - sns: web_image_updated
 
 custom:
   defaultStage: stg

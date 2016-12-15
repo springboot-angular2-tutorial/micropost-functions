@@ -25,6 +25,8 @@ function findImagesToClear(images, age) {
 function deleteImages(images, repositoryName) {
   const imageIds = images.map(i => _.pick(i, 'imageDigest'));
 
+  if (imageIds.length == 0) return;
+
   return ecr.batchDeleteImage({
     imageIds: imageIds,
     repositoryName: repositoryName,

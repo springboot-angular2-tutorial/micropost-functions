@@ -27,7 +27,7 @@ functions:
             age: 2
             repositoryName: 'micropost/frontend'
       - schedule:
-          rate: rate(1 minute)
+          rate: rate(24 hours)
           enabled: true
           input:
             age: 2

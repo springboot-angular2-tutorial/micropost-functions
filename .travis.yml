@@ -10,7 +10,7 @@ node_js:
   - '4.3.2'
 
 before_install:
-  - npm install -g yarn serverless
+  - npm install -g serverless
 install:
   - yarn install
 

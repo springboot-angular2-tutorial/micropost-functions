@@ -6,6 +6,6 @@
     "serverless-plugin-write-env-vars": "^1.0.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.6.12"
+    "aws-sdk": "^2.19.0"
   }
 }

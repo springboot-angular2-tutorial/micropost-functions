@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@slack/client": "^3.6.0",
+    "@slack/client": "^5.0.0",
     "dotenv": "^2.0.0",
     "lodash": "^4.17.2",
     "serverless-plugin-write-env-vars": "^1.0.1"
